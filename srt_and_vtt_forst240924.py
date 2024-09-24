@@ -43,6 +43,13 @@ st.title("字幕フォーマット変換")
 # テキストボックス1（入力）
 input_text = st.text_area("ここにVTTまたはSRT形式の字幕テキストをペーストしてください", height=200)
 
+# ファイルアップローダー
+uploaded_file = st.file_uploader("または、ファイルをアップロードしてください（VTTまたはSRT形式）", type=['vtt', 'srt'])
+
+# アップロードされたファイルの処理
+if uploaded_file is not None:
+    input_text = uploaded_file.getvalue().decode("utf-8")  # ファイルの内容をテキストとして読み込む
+
 # ボタン1（変換）
 if st.button("変換"):
     if input_text:
