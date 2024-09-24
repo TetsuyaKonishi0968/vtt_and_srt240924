@@ -50,6 +50,10 @@ uploaded_file = st.file_uploader("または、ファイルをアップロード�
 if uploaded_file is not None:
     input_text = uploaded_file.getvalue().decode("utf-8")  # ファイルの内容をテキストとして読み込む
 
+# 改行コードを統一
+input_text = input_text.replace('\r\n', '\n')
+
+
 # ボタン1（変換）
 if st.button("変換"):
     if input_text:
